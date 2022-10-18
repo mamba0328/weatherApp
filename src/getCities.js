@@ -1,6 +1,6 @@
 async function getCities() {
     try { 
-        const myData = await fetch('../../src/current.city.list.json', { mode: "cors" })
+        const myData = await fetch('src/current.city.list.json', { mode: "cors" })
         const json = await myData.json()
         const cities = [];
         
