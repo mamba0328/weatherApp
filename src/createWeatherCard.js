@@ -6,8 +6,8 @@ function createWeatherCard(iconUrl, weatherDescription, temperature, feelsLikeTe
     let snowyBackground = 'https://media0.giphy.com/media/bnsWLCG5bEaiI/giphy.gif?cid=790b76112268c88e95c0c3dc7117bfbec13e444cd87de72c&rid=giphy.gif&ct=g';
     let mistBackground = 'https://media2.giphy.com/media/xUA7b4arnbo3THfzi0/giphy.gif?cid=790b7611e04656b6b14f98dbd4f1e8ae49cbefaa5c43e04c&rid=giphy.gif&ct=g';
 
+    //changes bodys backgorund based on weatherDescription
     const body = document.querySelector('body'); 
-    console.log(weatherDescription)
     if (weatherDescription === 'Clear' || weatherDescription === 'few clouds') {
         body.style.backgroundImage = `url(${clearBackground})`
     } else if (weatherDescription === 'Clouds' || weatherDescription === 'broken clouds'){ 
@@ -22,8 +22,11 @@ function createWeatherCard(iconUrl, weatherDescription, temperature, feelsLikeTe
         body.style.backgroundImage = `url('https://marketplace.canva.com/EAD2962NKnQ/2/0/1600w/canva-rainbow-gradient-pink-and-purple-zoom-virtual-background-_Tcjok-d9b4.jpg')`;
     }
     
-    
+    //creates exit button 
+    const arrowLeft = document.createElement('div');
+    arrowLeft.classList.add('long-arrow-left');
 
+    //creates card
     function createInfoDiv(property, value, appendTo) { 
         const div = document.createElement('div');
         const h2 = document.createElement('h2');
@@ -69,6 +72,7 @@ function createWeatherCard(iconUrl, weatherDescription, temperature, feelsLikeTe
     weatherCard.appendChild(temperatureDiv);
     weatherCard.appendChild(conditionsDiv);
     weatherCard.appendChild(sunRiseSetDiv);
+    body.appendChild(arrowLeft)
     body.appendChild(weatherCard)
 }
 

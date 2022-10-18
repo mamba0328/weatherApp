@@ -3,7 +3,6 @@ import getCities from "./getCities"; //parses JSON cities and returns as an arra
 import createWeatherCard from "./createWeatherCard";
 
 const apiKey = '086b2b26628495b7963d2f7ab57f00c8';
-//const iconsUrl = ``; 
 
 const searchbox = document.getElementById("myInput");
 const searchButton = document.getElementById('search');
@@ -21,11 +20,20 @@ searchButton.addEventListener('click', async () => {
     if (!searchbox.value) {
         return
     }
+
     const data = await getWeather();
+    if (!data) {
+        return
+    }
     body.innerHTML = ' ';
-    createWeatherCard(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9])
+    createWeatherCard(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9]);
 })
 
+body.addEventListener('click', (e) => {
+    if (e.target.classList[0] === 'long-arrow-left') {
+        document.location.reload();
+    }
+})
 
 async function getWeather() {
         try { 
